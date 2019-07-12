@@ -10,7 +10,7 @@ namespace Asp.netCoreAngularCRUDOperation.Models
 
         [Required]
         [Column(TypeName = "nvarchar(100)")]
-        public string CartOwnerName{ get; set; }
+        public string CardOwnerName{ get; set; }
 
         [Required]
         [Column(TypeName ="varchar(16)")]
