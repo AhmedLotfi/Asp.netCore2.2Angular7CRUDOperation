@@ -1,10 +1,10 @@
-export class PaymentDetail {
-
+export class PaymentDetailModel {
     constructor(
-        private PMID :number,
-        private CardOwnerName:string,
-        private CardNumber:string,
-        private ExpirationDate:string,
-        private CVV:string,
-        ){}
+        public PMID :number,
+    public CardOwnerName:string,
+    public CardNumber:string,
+    public ExpirationDate:string,
+    public CVV:string,
+    ){}
+  
 }

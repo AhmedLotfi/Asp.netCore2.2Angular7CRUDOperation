@@ -2,4 +2,27 @@
   <h3 class="col-md-12 text-center">
     List Data Info .. 
   </h3>
+  <div class="table-responsive">
+    <table class="table-hover table">
+      <thead>
+           <tr>
+             <th>
+                Card Owner Name
+             </th>
+             <th>
+                Card Number
+             </th>
+           </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let pay of payDetailService.listPaymentDetails">
+             <td  (click)="onRowClicked(pay)">{{pay.CardOwnerName}}</td>
+             <td  (click)="onRowClicked(pay)">{{pay.CardNumber}}</td>
+             <td (click)="deleteRow(pay.PMID)"> 
+               <i class="text-danger fa fa-trash"></i>
+             </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

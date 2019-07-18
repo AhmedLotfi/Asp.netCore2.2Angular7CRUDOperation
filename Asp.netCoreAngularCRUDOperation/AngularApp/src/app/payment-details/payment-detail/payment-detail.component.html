@@ -1,7 +1,89 @@
 <div class="row card">
   <div class="col-md-12">
     <h3 class="text-center">
-      Register Form
+      Form Registration
     </h3>
+   
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+        <input type="hidden" [value]="service.formData.PMID" name="PMID"  [(ngModel)]="service.formData.PMID">   
+        <div class="form-group">
+            <div class="input-form">
+              <div class="input-group">
+                <div class="input-group-append">
+                  <div class="input-group-text bg-white"
+                  [class.text-danger]="!CardOwnerName.valid && CardOwnerName.touched" 
+                  [class.text-success]="CardOwnerName.valid" id="my-addon">
+                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <input class="form-control" type="text" name="CardOwnerName" #CardOwnerName="ngModel" [(ngModel)]="service.formData.CardOwnerName" placeholder="Owner Card Name"  aria-describedby="my-addon" required>
+              
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+              <p *ngIf="!CardOwnerName.valid && CardOwnerName.touched" class="text-danger">
+                 This field is required
+                </p>
+          </div>
+          <div class="form-group">
+              <div class="input-form">
+                <div class="input-group">
+                  <div class="input-group-append">
+                    <div class="input-group-text bg-white" id="my-addon">
+                        <i class="fa fa-credit-card-alt" aria-hidden="true" [class.text-success]="CardNumber.valid" [class.text-danger]="!CardNumber.valid && CardNumber.touched"></i>
+                      </div>
+                  </div>
+                  <input class="form-control" type="text" name="CardNumber" #CardNumber="ngModel" [(ngModel)]="service.formData.CardNumber" placeholder="16 Digit Card Number"  aria-describedby="my-addon" required minlength="16" maxlength="16">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+                <p *ngIf="!CardNumber.valid && CardNumber.touched" class="text-danger">
+                   This field is required
+                  </p>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-7">
+                    <div class="input-form">
+                      <div class="input-group">
+                        <div class="input-group-append">
+                          <div class="input-group-text bg-white" id="my-addon">
+                              <i class="fa fa-calendar" aria-hidden="true"  [class.text-success]="ExpirationDate.valid" [class.text-danger]="!ExpirationDate.valid && ExpirationDate.touched"></i> 
+                             </div>
+                        </div>
+                        <input class="form-control" type="text" name="ExpirationDate" #ExpirationDate="ngModel" [(ngModel)]="service.formData.ExpirationDate" placeholder="MM/YY"  aria-describedby="my-addon" required minlength="5" maxlength="5">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <p *ngIf="!ExpirationDate.valid && ExpirationDate.touched" class="text-danger">
+                         This field is required
+                        </p>
+                  </div>
+                  <div class="form-group col-md-5">
+                      <div class="input-form">
+                        <div class="input-group">
+                          <div class="input-group-append">
+                            <div class="input-group-text bg-white" id="my-addon">
+                               <i class="fa fa-key" aria-hidden="true" [class.text-success]="CVV.valid" [class.text-danger]="!CVV.valid && CVV.touched"></i>
+                            </div>
+                          </div>
+                          <input class="form-control" type="password" name="CVV" #CVV="ngModel" [(ngModel)]="service.formData.CVV" placeholder="CVV"  aria-describedby="my-addon" required minlength="3" maxlength="3">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <p *ngIf="!CVV.valid && CVV.touched" class="text-danger">
+                           This field is required
+                          </p>
+                    </div>
+            </div>
+                <div class="form-group">
+                  <button [textContent]="form.value.PMID === 0 ? 'Submit' :  'Update' " [disabled]="!form.valid" type="submit" class="btn btn-success btn-lg btn-block">
+                    <i class="fa fa-database"></i>
+                  </button>
+              </div>
+    </form>
   </div>
 </div>

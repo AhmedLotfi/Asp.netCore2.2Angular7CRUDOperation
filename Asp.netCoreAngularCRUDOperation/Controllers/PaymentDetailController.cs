@@ -68,7 +68,7 @@ namespace Asp.netCoreAngularCRUDOperation.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(new { done =true});
         }
 
         // POST: api/PaymentDetail
